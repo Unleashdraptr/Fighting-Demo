@@ -42,7 +42,6 @@ public class BattleStuff : MonoBehaviour
         GameObject enemy = Instantiate(Prefabs[3], Locations[3]);
         EnemyStats = enemy.GetComponent<Enemystats>();
 
-        SetPlayerStats();
         SetEnemyStats(EnemyStats);
 
         HUD.SetupP1UI(Player1stats);
