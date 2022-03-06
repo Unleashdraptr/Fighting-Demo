@@ -73,8 +73,6 @@ public class UI : MonoBehaviour
         Lvl[3].text = "Lvl " + enemy.Lvl;
         Hpslider[3].maxValue = enemy.MaxHp;
         Hpslider[3].value = enemy.Hp;
-        StaminaSlider[3].maxValue = enemy.MAXStrength;
-        StaminaSlider[3].value = enemy.Strength;
     }
     public void SetEnemyHealth(int hp)
     {

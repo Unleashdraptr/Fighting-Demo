@@ -5,27 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuUI : MonoBehaviour
 {
-    MapGenerator mapGenerator;
     public GameObject Start;
     public GameObject Levels;
     public GameObject RandomWorld;
     public GameObject Exit;
     public GameObject Return;
     public GameObject Level;
-    GameObject SeedTransfer;
-    int[] SeedLvl = { -42069, -69420, 69420, 42069, 69, 5687, -61053, -47870, 17933, -43301 };
-    int[] LvlNumber = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,22,23,24 };
-    int[] Xoffset = { -100, 150, 400, 650, 900, 1150, 1400, 1650, -100, 150, 400, 650, 900, 1150, 1400, 1650, -100, 150, 400, 650, 900, 1150, 1400, 1650 };
-    int[] Yoffset = { 200, 200, 200, 200, 200, 200, 200, 200, 400, 400, 400, 400, 400, 400, 400, 400, 600, 600, 600, 600, 600, 600, 600, 600 };
+    int[] SeedLvl = { 42069, 69420, 69, 5687, 61053, 47870, 17933, 43301, 84738, 59468, 75553, 74104, 72278 };
+    Vector3[] StartPos = { new Vector3(272, 9, 274), new Vector3(-63, 19, -302), new Vector3(156, 78, -455), new Vector3(0, 9, 0), new Vector3(886, 24, 232), new Vector3(-49, 139, -850), new Vector3(56, 3, -168), new Vector3(0, 10, 0), new Vector3(-117, 15, 613), new Vector3(157, 9, -112), new Vector3(571, 9, 573), new Vector3(-17, 148, -329), new Vector3(-280, 13, -378), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0),new Vector3(0,0,0) };
+    int[] EnemiesToWin = { 5, 8, 10, 12, 15, 18, 20, 22, 25, 28, 30, 32, 35, 40, 45, 50, 60, 70, 80, 90, 95, 100, 125, 150 };
     public void StartPress()
     {
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Destroy(GameObject.Find("Start(Clone)"));
         Destroy(GameObject.Find("Exit(Clone)"));
         Instantiate(Levels, new Vector3(950, 635, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
         Instantiate(RandomWorld, new Vector3(950, 75, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
         Instantiate(Return, new Vector3(1700, 45, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
-
     }
     public void QuitOnPress()
     {
@@ -57,6 +52,8 @@ public class MainMenuUI : MonoBehaviour
     {
         Variables.random = false;
         Variables.SeedNumber = SeedLvl[(LvlNum - 1)];
+        Variables.EnemiesToKill = EnemiesToWin[LvlNum - 1];
+        Variables.PlayerPos = StartPos[LvlNum - 1];
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

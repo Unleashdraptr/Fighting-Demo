@@ -8,7 +8,6 @@ public class Enemy_Death_Trigger : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("Collision");
             Destroy(collision.gameObject);
         }
     }

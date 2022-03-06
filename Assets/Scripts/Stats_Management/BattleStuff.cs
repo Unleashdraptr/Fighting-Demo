@@ -58,13 +58,13 @@ public class BattleStuff : MonoBehaviour
 
         yield return new WaitForSeconds(4f);
 
-        state = BattleState.PLAYER1TURN;
         Player1Turn();
 
 
     }
     public void Player1Turn()
     {
+        state = BattleState.PLAYER1TURN;
         Battletext.text = "Player 1 choose your move!";
         ShowOtherButtons();
     }
@@ -84,12 +84,24 @@ public class BattleStuff : MonoBehaviour
     {
         state = BattleState.ENEMYTURN;
         Battletext.text = "Enemy turn!";
-        EnemyAIMove();
+        StartCoroutine(EnemyAIMove());
     }
-    public void OnAttackButton()
+    public void OnAttackButton(int Num)
     {
         HideAttackOptions();
-        if (state == BattleState.PLAYER1TURN | state == BattleState.PLAYER2TURN | state == BattleState.PLAYER3TURN)
+        if (Num == 1)
+        {
+            StartCoroutine(PlayerAttack());
+        }
+        if (Num == 2)
+        {
+            StartCoroutine(PlayerAttack());
+        }
+        if (Num == 3)
+        {
+            StartCoroutine(PlayerAttack());
+        }
+        if (Num == 4)
         {
             StartCoroutine(PlayerAttack());
         }
@@ -131,11 +143,15 @@ public class BattleStuff : MonoBehaviour
             {
                 EnemyTurn();
             }
-            if (state == BattleState.PLAYER2TURN && Player3stats.Faint == false)
+            else if (state == BattleState.PLAYER2TURN && Player3stats.Faint == false)
             {
                 Player3Turn();
             }
-            if (state == BattleState.PLAYER1TURN && Player2stats.Faint == false)
+            else if (state == BattleState.PLAYER1TURN && Player2stats.Faint == true)
+            {
+                Player3Turn();
+            }
+            else if (state == BattleState.PLAYER1TURN && Player2stats.Faint == false)
             {
                 Player2Turn();
             }
@@ -145,59 +161,66 @@ public class BattleStuff : MonoBehaviour
             }
         }
     }
-    public void EnemyAIMove()
+    IEnumerator EnemyAIMove()
     {
         bool faint = false;
-        int Target = Random.Range(0, 4);
-        if (Target == 1)
+        int Target = Random.Range(1, 4);
+        yield return new WaitForSeconds(2f);
+        if (Target == 1 && Player1stats.Faint == false)
         {
-            Battletext.text = "Enemies attacks Player 1";
+            Battletext.text = "Enemy attacks Player 1";
+            yield return new WaitForSeconds(2f);
             faint = Player1stats.TakeDamage(EnemyStats.Atk);
-            if(faint == true)
+            if (faint == true)
             {
-                Destroy(GameObject.Find("BattlePlayer1(Clone)"));
+                Destroy(GameObject.Find("BattlePlayer 1(Clone)"));
+                Player1stats.Faint = true;
             }
         }
-        if (Target == 2)
+        else
+            Target = 2;
+        if (Target == 2 && Player2stats.Faint == false)
         {
-            Battletext.text = "Enemies attacks Player 2";
+            Battletext.text = "Enemy attacks Player 2";
+            yield return new WaitForSeconds(2f);
             faint = Player2stats.TakeDamage(EnemyStats.Atk);
             if (faint == true)
             {
-                Destroy(GameObject.Find("BattlePlayer2(Clone)"));
+                Destroy(GameObject.Find("BattlePlayer 2(Clone)"));
+                Player2stats.Faint = true;
             }
         }
-        if (Target == 3)
+        else
+            Target = 3;
+        if (Target == 3 && Player3stats.Faint == false)
         {
-            Battletext.text = "Enemies attacks Player 3";
+            Battletext.text = "Enemy attacks Player 3";
+            yield return new WaitForSeconds(2f);
             faint = Player3stats.TakeDamage(EnemyStats.Atk);
             if (faint == true)
             {
-                Destroy(GameObject.Find("BattlePlayer3(Clone)"));
+                Destroy(GameObject.Find("BattlePlayer 3(Clone)"));
+                Player3stats.Faint = true;
             }
         }
-        HUD.SetEnemyStamina(EnemyStats.Strength);
         HUD.SetP1Health(Player1stats.hp);
         HUD.SetP2Health(Player2stats.hp);
         HUD.SetP3Health(Player3stats.hp);
-        if (faint == false)
+        if (Player1stats.Faint == false)
         {
-            if (Player1stats.Faint == false)
-            {
-                state = BattleState.PLAYER1TURN;
-                Player1Turn();
-            }
-            if (Player2stats.Faint == false)
-            {
-                state = BattleState.PLAYER2TURN;
-                Player2Turn();
-            }
-            if (Player3stats.Faint == false)
-            {
-                state = BattleState.PLAYER3TURN;
-                Player3Turn();
-            }
+            Player1Turn();
         }
+        else if (Player2stats.Faint == false)
+        {
+            Player2Turn();
+        }
+        else if (Player3stats.Faint == false)
+        {
+            Player3Turn();
+        }
+        else
+            StartCoroutine(BattleLose());
+
     }
     public void Randomised(ref int HpAmount, ref int AtkAmount, ref int DefAmount, ref int SpdAmount, ref int AccAmount, ref int LvlAmount)
     {
@@ -292,16 +315,16 @@ public class BattleStuff : MonoBehaviour
     public void ShowAttackOptions()
     {
         // Show button
-        GameObject.Find("Attack 1").transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        GameObject.Find("Attack 2").transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        GameObject.Find("Attack 3").transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        GameObject.Find("Attack 4").transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        GameObject.Find("Quit").transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        GameObject.Find("Attack 1").transform.localScale = new Vector3(1,1,1);
+        GameObject.Find("Attack 2").transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("Attack 3").transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("Attack 4").transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("Quit").transform.localScale = new Vector3(1, 1, 1);
     }
     public void ShowOtherButtons()
     {
-        GameObject.Find("Battle").transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
-        GameObject.Find("RunAway").transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+        GameObject.Find("Battle").transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("RunAway").transform.localScale = new Vector3(1, 1, 1);
     }
     public void HideOtherButtons()
     {
@@ -321,7 +344,32 @@ public class BattleStuff : MonoBehaviour
     public void BattleWin()
     {
         StartCoroutine(Win());
+        Variables.EnemiesToKill -= 1;
+        CheckEnemiesLeft();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+    }
+    IEnumerator BattleLose()
+    {
+        Battletext.text = "All Players are dead!";
+        yield return new WaitForSeconds(2f);
+        Battletext.text = "You Lose!";
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
+    }
+    public void CheckEnemiesLeft()
+    {
+        if(Variables.EnemiesToKill <= 0)
+        {
+            StartCoroutine(GameWon());
+        }
+    }
+    IEnumerator GameWon()
+    {
+        Battletext.text = "Youve killed the amount need!";
+        yield return new WaitForSeconds(2f);
+        Battletext.text = "You Win!";
+        yield return new WaitForSeconds(4f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 2);
     }
     public void BattleEnd()
     {

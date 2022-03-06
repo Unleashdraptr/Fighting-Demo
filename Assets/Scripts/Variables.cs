@@ -8,4 +8,5 @@ public class Variables : MonoBehaviour
     public static bool random;
     public static Vector3 PlayerPos = new Vector3(0,100,0);
     public static int SeedNumber;
+    public static bool Pause;
 }

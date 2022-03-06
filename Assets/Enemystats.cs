@@ -12,8 +12,6 @@ public class Enemystats : MonoBehaviour
     public int Def;
     public int Spd;
     public int Acc;
-    public int Strength = 20;
-    public int MAXStrength = 20;
 
     public bool faint = false;
     public bool TakeDamage(int damage)

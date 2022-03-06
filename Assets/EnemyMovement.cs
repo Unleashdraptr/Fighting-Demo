@@ -17,30 +17,33 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        int Change;
-        CharacterController controller = GetComponent<CharacterController>();
-        // is the controller on the ground?
-        if (controller.isGrounded)
+        if (Variables.Pause == false)
         {
-            //Feed moveDirection with input.
-            Direction = WalkDirection;
-            Rotation = SetRotation;
-            Direction = transform.TransformDirection(Direction);
-            Change = Random.Range(1, 500);
-            if (Change == 3)
+            int Change;
+            CharacterController controller = GetComponent<CharacterController>();
+            // is the controller on the ground?
+            if (controller.isGrounded)
             {
-                Direction.y = jump;
+                //Feed moveDirection with input.
+                Direction = WalkDirection;
+                Rotation = SetRotation;
+                Direction = transform.TransformDirection(Direction);
+                Change = Random.Range(1, 500);
+                if (Change == 3)
+                {
+                    Direction.y = jump;
+                }
+                if (Change == 5)
+                {
+                    WalkingDirection();
+                }
             }
-            if (Change == 5)
-            {
-                WalkingDirection();
-            }
+            //Applying gravity to the controller
+            Direction.y -= gravity * Time.deltaTime;
+            //Making the character move
+            transform.Rotate(Rotation * Time.deltaTime);
+            controller.Move(Direction * Time.deltaTime);
         }
-        //Applying gravity to the controller
-        Direction.y -= gravity * Time.deltaTime;
-        //Making the character move
-        transform.Rotate(Rotation * Time.deltaTime);
-        controller.Move(Direction * Time.deltaTime);
     }
     void WalkingDirection()
     {

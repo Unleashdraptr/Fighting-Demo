@@ -22,9 +22,6 @@ public class MapGenerator : MonoBehaviour
     Color[] colourMap;
     //How dramatic the terrain changes
     public AnimationCurve MeshHeight;
-
-    //Colours and what height they appear
-    public TerrainType[] regions;
     
     public void GenerateMap(int SeedNum)
     {
@@ -38,9 +35,9 @@ public class MapGenerator : MonoBehaviour
             for(int x = 0; x < MapChunkSize; x++)
             {
                 float currentHeight = NoiseMap[x, y];
-                for(int i = 0; i < regions.Length; i++)
+                for(int i = 0; i < 1; i++)
                 {
-                    if (currentHeight <= regions[i].length)
+                    if (currentHeight <= 1)
                     {
                        colourMap[y * MapChunkSize + x] = MeshGradient.Evaluate(currentHeight);
                        break;
@@ -53,12 +50,4 @@ public class MapGenerator : MonoBehaviour
         MapDisplay display = FindObjectOfType<MapDisplay>();
         display.DrawMesh(MeshGenerator.GenerateTerrainMesh(NoiseMap, MeshMult, MeshHeight), TextureGenerator.TextureFromColourMap(colourMap, MapChunkSize, MapChunkSize));  
     }
-}
-[System.Serializable]
-
-//Variables set down here within Unity
-public struct TerrainType
-{
-    public float length;
-    public Color colour;
 }

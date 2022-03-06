@@ -17,28 +17,30 @@ public class Player_Movement : MonoBehaviour
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
-        // is the controller on the ground?
-        if (controller.isGrounded)
+        // is the controller on the ground and the game not pasued?
+        if (Variables.Pause == false)
         {
-            //Feed moveDirection with input.
-            Direction = new Vector3(0, 0, Input.GetAxis("Vertical")*MoveSpeed);
-            Rotation = new Vector3(0, Input.GetAxis("Horizontal")*RotateSpeed, 0);
-            Direction = transform.TransformDirection(Direction);
-            //Jumping
-            if (Input.GetButton("Jump"))
+            if (controller.isGrounded)
             {
-                Direction.y = jump;
+                //Feed direction and rotation into Vector3s.
+                Direction = new Vector3(0, 0, Input.GetAxis("Vertical") * MoveSpeed);
+                Rotation = new Vector3(0, Input.GetAxis("Horizontal") * RotateSpeed, 0);
+                Direction = transform.TransformDirection(Direction);
+                //Jumping
+                if (Input.GetButton("Jump"))
+                {
+                    Direction.y = jump;
+                }
+                if (Input.GetButton("Dash"))
+                {
+                    Direction.z *= Dash;
+                }
             }
-            if (Input.GetButton("Dash"))
-            {
-                Direction.z *= Dash;
-            }
+            //Applying gravity to the controller
+            Direction.y -= gravity * Time.deltaTime;
+            //Making the character move
+            transform.Rotate(Rotation * Time.deltaTime);
+            controller.Move(Direction * Time.deltaTime);
         }
-        //Applying gravity to the controller
-        Direction.y -= gravity * Time.deltaTime;
-        //Making the character move
-        transform.Rotate(Rotation * Time.deltaTime);
-        controller.Move(Direction * Time.deltaTime);
-        
     }
 }
