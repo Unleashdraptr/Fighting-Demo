@@ -7,8 +7,6 @@ public class Universal_Stats : MonoBehaviour
     public int hp = 50;
     public int Atk = 0;
     public int Def = 0;
-    public int Spd = 0;
-    public int Acc = 0;
 
     public int Lvl = 0;
     public bool Faint = false;

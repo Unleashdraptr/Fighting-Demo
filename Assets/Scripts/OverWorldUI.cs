@@ -9,12 +9,12 @@ public class OverWorldUI : MonoBehaviour
     public Text EnemiesLeftToKill;
     void Start()
     {
-        EnemiesLeftToKill.text = (Variables.EnemiesToKill.ToString() + "Enemies left to kill");
+        EnemiesLeftToKill.text = " Enemies left to kill:" + Variables.EnemiesToKill.ToString();
     }
     public void OnPauseButton()
     {
 
-        GameObject.Find("PauseEffect").transform.localScale = new Vector3(9.8f, 5f, 0);
+        GameObject.Find("PauseEffect").transform.localScale = new Vector3(10.8f, 5f, 0);
         GameObject.Find("PauseText").transform.localScale = new Vector3(1, 1, 1);
         GameObject.Find("PauseButton").transform.localScale = new Vector3(0, 0, 0);
         GameObject.Find("PlayButton").transform.localScale = new Vector3(1, 1, 1);

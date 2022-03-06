@@ -1213,7 +1213,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Block
 --- !u!222 &456722952
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1469,7 +1469,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 633199992}
-  - component: {fileID: 633199994}
   - component: {fileID: 633199991}
   m_Layer: 0
   m_Name: Battle System
@@ -1503,6 +1502,9 @@ MonoBehaviour:
   - {fileID: 1668359434}
   HUD: {fileID: 1594396954}
   state: 0
+  P1Block: 0
+  P2Block: 0
+  P3Block: 0
 --- !u!4 &633199992
 Transform:
   m_ObjectHideFlags: 0
@@ -1517,18 +1519,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &633199994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633199990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ad8406764bf1de48afc80d04e390785, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &634336443
 GameObject:
   m_ObjectHideFlags: 0
@@ -1688,7 +1678,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Attack
 --- !u!222 &669495765
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3311,7 +3301,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Special
 --- !u!222 &1382496134
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4424,7 +4414,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: All out
 --- !u!222 &1807907308
 CanvasRenderer:
   m_ObjectHideFlags: 0

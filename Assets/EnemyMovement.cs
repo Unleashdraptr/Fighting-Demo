@@ -37,6 +37,11 @@ public class EnemyMovement : MonoBehaviour
                 {
                     WalkingDirection();
                 }
+                if (Change == 450)
+                {
+                    WalkDirection = new Vector3(0, 0, 0);
+                    SetRotation = new Vector3(0, 0, 0);
+                }
             }
             //Applying gravity to the controller
             Direction.y -= gravity * Time.deltaTime;

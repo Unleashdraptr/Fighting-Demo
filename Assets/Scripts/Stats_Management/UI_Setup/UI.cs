@@ -16,16 +16,16 @@ public class UI : MonoBehaviour
         Lvl[0].text = "Lvl " + player1.Lvl;
         Hpslider[0].maxValue = player1.Maxhp;
         Hpslider[0].value = player1.hp;
-        StaminaSlider[0].maxValue = player1.MAXStrength;
+        StaminaSlider[0].maxValue = player1.Strength;
         StaminaSlider[0].value = player1.Strength;
     }
     public void SetP1Health(int hp)
     {
         Hpslider[0].value = hp;
     }
-    public void SetP1Stamina(int hp)
+    public void SetP1Stamina(int Strength)
     {
-        StaminaSlider[0].value = hp;
+        StaminaSlider[0].value = Strength;
     }
 
 
@@ -35,16 +35,16 @@ public class UI : MonoBehaviour
         Lvl[1].text = "Lvl " + player2.Lvl;
         Hpslider[1].maxValue = player2.Maxhp;
         Hpslider[1].value = player2.hp;
-        StaminaSlider[1].maxValue = player2.MAXAmmo;
+        StaminaSlider[1].maxValue = player2.Ammo;
         StaminaSlider[1].value = player2.Ammo;
     }
     public void SetP2Health(int hp)
     {
         Hpslider[1].value = hp;
     }
-    public void SetP2Stamina(int hp)
+    public void SetP2Stamina(int Ammo)
     {
-        StaminaSlider[1].value = hp;
+        StaminaSlider[1].value = Ammo;
     }
 
 
@@ -54,16 +54,16 @@ public class UI : MonoBehaviour
         Lvl[2].text = "Lvl " + player3.Lvl;
         Hpslider[2].maxValue = player3.Maxhp;
         Hpslider[2].value = player3.hp;
-        StaminaSlider[2].maxValue = player3.MAXMana;
+        StaminaSlider[2].maxValue = player3.Mana;
         StaminaSlider[2].value = player3.Mana;
     }
     public void SetP3Health(int hp)
     {
         Hpslider[2].value = hp;
     }
-    public void SetP3Stamina(int hp)
+    public void SetP3Stamina(int Mana)
     {
-        StaminaSlider[2].value = hp;
+        StaminaSlider[2].value = Mana;
     }
 
 
