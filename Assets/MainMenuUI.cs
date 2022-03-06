@@ -18,9 +18,9 @@ public class MainMenuUI : MonoBehaviour
     {
         Destroy(GameObject.Find("Start(Clone)"));
         Destroy(GameObject.Find("Exit(Clone)"));
-        Instantiate(Levels, new Vector3(950, 635, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
-        Instantiate(RandomWorld, new Vector3(950, 75, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
-        Instantiate(Return, new Vector3(1700, 45, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+        Instantiate(Levels, new Vector3(550, 325, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+        Instantiate(RandomWorld, new Vector3(550, 75, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
+        Instantiate(Return, new Vector3(950, 45, 0), Quaternion.identity, GameObject.FindGameObjectWithTag("Canvas").transform);
     }
     public void QuitOnPress()
     {
@@ -30,7 +30,7 @@ public class MainMenuUI : MonoBehaviour
     {
         Destroy(GameObject.Find("Levels(Clone)"));
         Destroy(GameObject.Find("RandomWorld(Clone)"));
-        GameObject.Find("Levels").transform.localScale = new Vector3(3, 3, 1);
+        GameObject.Find("Levels").transform.localScale = new Vector3(1.5f, 1.5f, 1);
     }
     public void RandomWorldButton()
     {

@@ -110,7 +110,7 @@ RectTransform:
   m_GameObject: {fileID: 4448898845264730822}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1.25, y: 1.25, z: 1}
   m_Children:
   - {fileID: 6067092969440449290}
   m_Father: {fileID: 0}
@@ -232,3 +232,4 @@ MonoBehaviour:
   RandomWorld: {fileID: 0}
   Exit: {fileID: 3897186508694204387, guid: 317793b4ad8ece248968cd990772bc72, type: 3}
   Return: {fileID: 0}
+  Level: {fileID: 0}

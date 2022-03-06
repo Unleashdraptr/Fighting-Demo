@@ -14,11 +14,11 @@ public class OverWorldUI : MonoBehaviour
     public void OnPauseButton()
     {
 
-        GameObject.Find("PauseEffect").transform.localScale = new Vector3(19.2f, 10f, 0);
+        GameObject.Find("PauseEffect").transform.localScale = new Vector3(9.8f, 5f, 0);
         GameObject.Find("PauseText").transform.localScale = new Vector3(1, 1, 1);
         GameObject.Find("PauseButton").transform.localScale = new Vector3(0, 0, 0);
         GameObject.Find("PlayButton").transform.localScale = new Vector3(1, 1, 1);
-        GameObject.Find("Exit").transform.localScale = new Vector3(3, 3, 3);
+        GameObject.Find("Exit").transform.localScale = new Vector3(2, 2, 2);
         Variables.Pause = true;
 
     }

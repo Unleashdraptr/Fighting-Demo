@@ -18,7 +18,7 @@ public class RangeMovement : MonoBehaviour
     {
         if (Variables.Pause == false)
         {
-            int Spawn = Random.Range(1, 750);
+            int Spawn = Random.Range(1, 950);
             int Shiny = Random.Range(1, 400000);
             if (Spawn == 500)
             {
@@ -38,7 +38,7 @@ public class RangeMovement : MonoBehaviour
     void EnemyLocation(ref Vector3 Location)
     {
         int X = Random.Range(-300, 300);
-        int Y = Random.Range(0, 200);
+        int Y = Random.Range(10, 200);
         int Z = Random.Range(-300, 300);
         Location = new Vector3(Player.position.x+X, Player.position.y + Y, Player.position.z+Z);
     }

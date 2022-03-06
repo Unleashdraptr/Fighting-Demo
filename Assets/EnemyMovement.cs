@@ -44,6 +44,10 @@ public class EnemyMovement : MonoBehaviour
             transform.Rotate(Rotation * Time.deltaTime);
             controller.Move(Direction * Time.deltaTime);
         }
+        if(transform.position.y <= -500)
+        {
+            Destroy(gameObject);
+        }
     }
     void WalkingDirection()
     {
