@@ -10,6 +10,12 @@ public class OverWorldUI : MonoBehaviour
     void Start()
     {
         EnemiesLeftToKill.text = " Enemies left to kill:" + Variables.EnemiesToKill.ToString();
+        GameObject.Find("PauseEffect").transform.localScale = new Vector3(0, 0, 0);
+        GameObject.Find("PauseText").transform.localScale = new Vector3(0, 0, 0);
+        GameObject.Find("PauseButton").transform.localScale = new Vector3(1, 1, 1);
+        GameObject.Find("PlayButton").transform.localScale = new Vector3(0, 0, 0);
+        GameObject.Find("Exit").transform.localScale = new Vector3(0, 0, 0);
+        Variables.Pause = false;
     }
     public void OnPauseButton()
     {

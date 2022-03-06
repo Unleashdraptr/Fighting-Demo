@@ -14,6 +14,7 @@ public class Player_Movement : MonoBehaviour
     public Vector3 StartPos = Vector3.zero;
     public float MoveSpeed = 10;
     public float RotateSpeed = 50;
+
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
