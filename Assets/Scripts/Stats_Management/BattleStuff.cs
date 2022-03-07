@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public enum BattleState {START, WIN, LOSE, PLAYER1TURN, PLAYER2TURN, PLAYER3TURN, ENEMYTURN }
+public enum BattleState {START, PLAYER1TURN, PLAYER2TURN, PLAYER3TURN, ENEMYTURN }
 public class BattleStuff : MonoBehaviour
 {
     Enemystats EnemyStats;
@@ -42,6 +42,11 @@ public class BattleStuff : MonoBehaviour
         GameObject enemy = Instantiate(Prefabs[3], Locations[3]);
         EnemyStats = enemy.GetComponent<Enemystats>();
 
+        if(Variables.FirstBattle == true)
+        {
+            SetPlayerStats();
+            Variables.FirstBattle = false;
+        }
         SetEnemyStats(EnemyStats);
 
         HUD.SetupP1UI(Player1stats);
@@ -79,7 +84,7 @@ public class BattleStuff : MonoBehaviour
     {
         state = BattleState.ENEMYTURN;
         Battletext.text = "Enemy turn!";
-        StartCoroutine(EnemyAIMove());
+        StartCoroutine(EnemyAIAttack());
     }
 
     IEnumerator PlayerAttack(int Num)
@@ -125,7 +130,7 @@ public class BattleStuff : MonoBehaviour
                 if (Num == 3)
                 {
                     Battletext.text = "Player 1 goes all out!";
-                    Player1stats.Atk *= 5;
+                    Player1stats.Atk += (1*Player1stats.Strength);
                     faint = EnemyStats.TakeDamage(Player1stats.Atk);
                     Player1stats.Atk /= 5;
                     yield return new WaitForSeconds(2f);
@@ -328,7 +333,7 @@ public class BattleStuff : MonoBehaviour
             }
         }
     }
-    IEnumerator EnemyAIMove()
+    IEnumerator EnemyAIAttack()
     {
         bool faint = false;
         int Target = Random.Range(1, 4);

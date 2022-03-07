@@ -43,5 +43,16 @@ public class Player_Movement : MonoBehaviour
             transform.Rotate(Rotation * Time.deltaTime);
             controller.Move(Direction * Time.deltaTime);
         }
+        if (transform.position.y <= -25)
+        {
+            gameObject.transform.localScale = new Vector3(0,0,0);
+            Death();
+        }
+    }
+    public void Death()
+    {
+        GameObject.Find("DeathEffect").transform.localScale = new Vector3(10.8f, 5f, 0);
+        GameObject.Find("Exit").transform.localScale = new Vector3(2, 2, 2);
+        Variables.Pause = true;
     }
 }

@@ -10,13 +10,14 @@ public class Variables : MonoBehaviour
     public static int SeedNumber;
     public static bool Pause;
     public static bool FirstLoad;
-    BattleStuff battle;
+    public static bool FirstBattle;
+    public Transform Playerposition;
     private void Start()
     {
-        if (FirstLoad == true)
+        Playerposition.position = PlayerPos;
+        if(random == true)
         {
-            battle.SetPlayerStats();
-            FirstLoad = false;
+            SeedNumber = Random.Range(-10000, 10000);
         }
     }
 }

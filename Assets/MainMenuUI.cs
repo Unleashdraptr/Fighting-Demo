@@ -38,6 +38,7 @@ public class MainMenuUI : MonoBehaviour
         Variables.SeedNumber = Random.Range(-100000, 100000);
         Variables.PlayerPos = new Vector3(0, 100, 0);
         Variables.FirstLoad = true;
+        Variables.FirstBattle = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void ReturnPress()
@@ -57,6 +58,7 @@ public class MainMenuUI : MonoBehaviour
         Variables.EnemiesToKill = EnemiesToWin[LvlNum - 1];
         Variables.PlayerPos = StartPos[LvlNum - 1];
         Variables.FirstLoad = true;
+        Variables.FirstBattle = true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
