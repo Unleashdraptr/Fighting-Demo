@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-
-    public int SeedNum;
     public void Start()
     {
-        SeedNum = Variables.SeedNumber;
-        GenerateMap(SeedNum);
+        //Sets the seed
+        GenerateMap(Variables.SeedNumber);
     }
     //Size of map needs to calculate the mesh
     const int MapChunkSize = 255;
@@ -17,7 +15,7 @@ public class MapGenerator : MonoBehaviour
     //Map the map more terrain like
     float MeshMult = 8f;
 
-    //Repeat the same noise
+    //Set the colour of the map
     public Gradient MeshGradient;
     Color[] colourMap;
     //How dramatic the terrain changes
@@ -39,6 +37,7 @@ public class MapGenerator : MonoBehaviour
                 {
                     if (currentHeight <= 1)
                     {
+                        //Changes colour based on the map height of the area
                        colourMap[y * MapChunkSize + x] = MeshGradient.Evaluate(currentHeight);
                        break;
                     }
@@ -46,7 +45,7 @@ public class MapGenerator : MonoBehaviour
 
             }
         }
-        //Draw it on the Mesh map
+        //Draw it on the a texture
         MapDisplay display = FindObjectOfType<MapDisplay>();
         display.DrawMesh(MeshGenerator.GenerateTerrainMesh(NoiseMap, MeshMult, MeshHeight), TextureGenerator.TextureFromColourMap(colourMap, MapChunkSize, MapChunkSize));  
     }

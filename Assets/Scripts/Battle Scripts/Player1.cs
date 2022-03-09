@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player1 : Universal_Stats
 {
-    public int Strength = 20;
+    //Stats the player will use along with a Damage function that is inheritied
+    public int Strength;
     public string Name = "Brawler";
 }

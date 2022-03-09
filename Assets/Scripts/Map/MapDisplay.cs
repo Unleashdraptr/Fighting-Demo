@@ -4,18 +4,12 @@ using UnityEngine;
 
 public class MapDisplay : MonoBehaviour
 {
-    public Renderer textureRender;
+    //What it is assigned to
     public MeshFilter meshFilter;
     public MeshRenderer meshRenderer;
     public MeshCollider meshCollider;
 
-    public void DrawTexture(Texture2D texture)
-    {
-
-        textureRender.sharedMaterial.mainTexture = texture;
-        textureRender.transform.localScale = new Vector3(texture.width, 1, texture.height);
-
-    }
+    //Draws the mesh with the variables it gathers to assigned textures and meshs
     public void DrawMesh(MeshData meshData, Texture2D texture)
     {
         meshFilter.sharedMesh = meshData.CreateMesh();

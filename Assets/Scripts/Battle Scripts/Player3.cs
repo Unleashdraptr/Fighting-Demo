@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player3 : Universal_Stats
 {
-    public int Mana = 20;
+    //Stats the player will use along with a Damage function that is inheritied
+    public int Mana;
     public string Name = "Mage";
 }

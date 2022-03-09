@@ -6,6 +6,7 @@ public class MeshGenerator
 {
     public static MeshData GenerateTerrainMesh(float[,] heightMap, float HeightMult, AnimationCurve heightCurve)
     {
+        //Variables
         int width = heightMap.GetLength(0);
         int length = heightMap.GetLength(1);
         float TopLeftX = (width - 1) / -2f;
@@ -13,6 +14,7 @@ public class MeshGenerator
         int SimpInc = 1;
         int verLine = (width - 1) / SimpInc + 1;
 
+        //Mesh that was made
         MeshData meshData = new MeshData(verLine, verLine);
         int VerIndex = 0;
 
@@ -20,6 +22,7 @@ public class MeshGenerator
         {
             for(int x = 0; x < width; x++)
             {
+                //Compares the location to the height map and then builds the mesh accordingly
                 meshData.vertices[VerIndex] = new Vector3(TopLeftX + x, heightCurve.Evaluate(heightMap[x, y])* HeightMult, TopLeftZ - y);
                 meshData.uvs[VerIndex] = new Vector2(x / (float)width, y / (float)length);
                 if (x < width - 1 && y <length - 1)
@@ -36,6 +39,7 @@ public class MeshGenerator
 
 public class MeshData
 {
+    //Mesh's data it needs
     public Vector3[] vertices;
     public int[] triangles;
     public Vector2[] uvs;
@@ -50,6 +54,7 @@ public class MeshData
 
     public void AddTriangle(int a, int b, int c)
     {
+        //Building the triangles in the mesh
         triangles[TriIndex] = a;
         triangles[TriIndex+1] = b;
         triangles[TriIndex+2] = c;
@@ -58,6 +63,7 @@ public class MeshData
 
     public Mesh CreateMesh()
     {
+        //Creates the mesh 
         Mesh mesh = new Mesh();
         mesh.vertices = vertices;
         mesh.triangles = triangles;

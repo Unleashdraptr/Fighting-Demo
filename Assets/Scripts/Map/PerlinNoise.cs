@@ -19,10 +19,10 @@ public class PerlinNoise : MonoBehaviour
             float offsetY = prng.Next(-100000, 100000);
             OctaveOffsets[i] = new Vector2(offsetX, offsetY);
         }
-
         float maxheight = float.MinValue;
         float minheight = float.MaxValue;
 
+        //For size of the world
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < length; y++)
@@ -55,6 +55,7 @@ public class PerlinNoise : MonoBehaviour
                 NoiseMap[x, y] = noiseHeight;
             }
         }
+        //Smooths out the changes in height
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < length; y++)

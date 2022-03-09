@@ -4,20 +4,10 @@ using UnityEngine;
 
 public class Variables : MonoBehaviour
 {
+    //Variable that need to be used for both battle and overworld environments
     public static int EnemiesToKill;
     public static bool random;
     public static Vector3 PlayerPos;
     public static int SeedNumber;
     public static bool Pause;
-    public static bool FirstLoad;
-    public static bool FirstBattle;
-    public Transform Playerposition;
-    private void Start()
-    {
-        Playerposition.position = PlayerPos;
-        if(random == true)
-        {
-            SeedNumber = Random.Range(-10000, 10000);
-        }
-    }
 }

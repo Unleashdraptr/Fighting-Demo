@@ -8,10 +8,10 @@ public class Battle_Trigger : MonoBehaviour
     public Transform PlayerPos;
     private void OnCollisionEnter(Collision collision)
     {
+        //Checks if the player collided with an enemy and if so enter the battle scene while storing the players position
         if (collision.gameObject.tag == "Enemy")
         {
-            Variables.PlayerPos = new Vector3(PlayerPos.position.x, PlayerPos.position.y, PlayerPos.position.z);
-            Debug.Log("Hit");
+            Variables.PlayerPos = PlayerPos.position;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
