@@ -428,9 +428,21 @@ public class BattleStuff : MonoBehaviour
 
     public void SetPlayerStats()
     {
-        SetPlayer1Stats(Player1stats);
-        SetPlayer2Stats(Player2stats);
-        SetPlayer3Stats(Player3stats);
+        for(int i = 0; i < 3; i++)
+        {
+            if (i == 0)
+            {
+                SetPlayer1Stats(Player1stats);
+            }
+            if (i == 1)
+            {
+                SetPlayer2Stats(Player2stats);
+            }
+            if (i == 2)
+            {
+                SetPlayer3Stats(Player3stats);
+            }
+        }
     }
     void Randomised(ref int HpAmount, ref int AtkAmount, ref int DefAmount, ref int LvlAmount)
     {

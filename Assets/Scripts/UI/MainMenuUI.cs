@@ -39,6 +39,7 @@ public class MainMenuUI : MonoBehaviour
         Variables.random = true;
         Variables.SeedNumber = Random.Range(-100000, 100000);
         Variables.PlayerPos = new Vector3(0, 100, 0);
+        Variables.EnemiesToKill = 10;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
     public void ReturnPress()
