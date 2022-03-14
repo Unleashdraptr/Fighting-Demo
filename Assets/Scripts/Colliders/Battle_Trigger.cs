@@ -12,7 +12,7 @@ public class Battle_Trigger : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Variables.PlayerPos = PlayerPos.position;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            SceneManager.LoadScene("Battle");
         }
     }
 
